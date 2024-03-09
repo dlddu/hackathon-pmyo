@@ -11,19 +11,14 @@ import java.time.LocalDate;
 
 public class RecycleResultController{
 
-    @GetMapping("/server/imgList")
-    public String showRecycleForm() {
-        return "recycleForm";
-    }
+
+
+    
 
     @PostMapping("/gpts")
-    public ResponseEntity<RecycleResult> showRecycleResult(@RequestParam("pass") int pass,
-                                                                @RequestParam("fail") int fail,
-                                                                @RequestParam("score") int score,
+    public ResponseEntity<RecycleResult> showRecycleResult(@RequestParam("score") int score,
                                                            @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         RecycleResult result = new RecycleResult();
-        result.setPass(pass);
-        result.setFail(fail);
         result.setScore(score);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
