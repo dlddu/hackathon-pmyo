@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @Entity
 @NoArgsConstructor
 public class RecycleResult{
@@ -18,6 +20,36 @@ public class RecycleResult{
     int pass;
     int fail;
     int score;
+    String result_img;
+    //날짜 필드
+    LocalDate date;
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "RecycleResult{" +
+                "pass=" + pass +
+                ", fail=" + fail +
+                ", score=" + score +
+                ", result_img='" + result_img + '\'' +
+                '}';
+    }
+
+
+    public String getResult_img() {
+        return result_img;
+    }
+
+    public void setResult_img(String result_img) {
+        this.result_img = result_img;
+    }
 
     public Long getId() {
         return id;
@@ -29,15 +61,6 @@ public class RecycleResult{
 
     public int getScore() {
         return score;
-    }
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "RecycleResult{" +
-                "pass=" + pass +
-                ", fail=" + fail +
-                ", score=" + score +
-                '}';
     }
 
     public void setScore(int score) {

@@ -1,8 +1,13 @@
 package com.pmyo.pmyo.controller;
 
 import com.pmyo.pmyo.model.RecycleResult;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 public class RecycleResultController{
 
@@ -12,16 +17,14 @@ public class RecycleResultController{
     }
 
     @PostMapping("/gpts")
-    public String calculateRecycleResult(@RequestParam("pass") int pass,
-                                         @RequestParam("fail") int fail,
-                                         @RequestParam("score") int score,
-                                         Model model) {
+    public ResponseEntity<RecycleResult> showRecycleResult(@RequestParam("pass") int pass,
+                                                                @RequestParam("fail") int fail,
+                                                                @RequestParam("score") int score,
+                                                           @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         RecycleResult result = new RecycleResult();
         result.setPass(pass);
         result.setFail(fail);
         result.setScore(score);
-
-        model.addAttribute("result", result);
-        return "recycleResult";
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
