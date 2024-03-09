@@ -74,5 +74,3 @@ public class RecycleResult{
     }
 }
 
-@Repository interface RecycleResultRepository extends JpaRepository<RecycleResult, Long> {
-}
