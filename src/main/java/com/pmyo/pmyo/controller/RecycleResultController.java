@@ -11,10 +11,7 @@ import java.time.LocalDate;
 
 public class RecycleResultController{
 
-    @GetMapping("/server/imgList")
-    public String showRecycleForm() {
-        return "recycleForm";
-    }
+
 
     
 
