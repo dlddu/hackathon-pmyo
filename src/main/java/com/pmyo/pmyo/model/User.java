@@ -2,6 +2,8 @@ package com.pmyo.pmyo.model;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,4 +43,8 @@ public class User{
     public User(String name) {
         this.name = name;
     }
+}
+
+@Repository
+interface UserRepository extends JpaRepository<User, Long> {
 }

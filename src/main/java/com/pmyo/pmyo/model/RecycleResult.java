@@ -2,6 +2,8 @@ package com.pmyo.pmyo.model;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,4 +59,7 @@ public class RecycleResult{
     public void setPass(int pass) {
         this.pass = pass;
     }
+}
+
+@Repository interface RecycleResultRepository extends JpaRepository<RecycleResult, Long> {
 }
