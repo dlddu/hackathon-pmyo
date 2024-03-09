@@ -1,8 +1,8 @@
 package com.pmyo.pmyo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pmyo.pmyo.model.RecycleResult;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 public class RecycleResultController{
 
@@ -14,6 +14,7 @@ public class RecycleResultController{
     @PostMapping("/gpts")
     public String calculateRecycleResult(@RequestParam("pass") int pass,
                                          @RequestParam("fail") int fail,
+                                         @RequestParam("score") int score,
                                          Model model) {
         RecycleResult result = new RecycleResult();
         result.setPass(pass);
