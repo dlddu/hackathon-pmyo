@@ -33,7 +33,7 @@ public class DashboardController {
 
         Map<Category, Long> chart = Arrays.stream(Category.values()).map(category -> {
             List<RecycleResult> categorizedResults = recycleResult.stream().filter(result -> result.getCategory() == category).toList();
-            long score = categorizedResults.isEmpty() ? 0 : categorizedResults.stream().mapToLong(RecycleResult::getScore).sum() / categorizedResults.size();
+            long score = categorizedResults.isEmpty() ? 0 : (categorizedResults.size() - categorizedResults.stream().mapToLong(RecycleResult::getScore).sum()) / categorizedResults.size();
             return Map.entry(category, score);
         }).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 

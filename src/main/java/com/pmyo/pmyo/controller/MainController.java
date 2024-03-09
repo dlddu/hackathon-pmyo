@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("main")
 public class MainController {
     @GetMapping
-    public String GetMain(){
+    public String GetMain() {
         return "main";
     }
 }
