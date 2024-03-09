@@ -17,8 +17,6 @@ public class RecycleResult{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    int pass;
-    int fail;
     int score;
     String result_img;
     //날짜 필드
@@ -35,9 +33,7 @@ public class RecycleResult{
     @Override
     public String toString() {
         return "RecycleResult{" +
-                "pass=" + pass +
-                ", fail=" + fail +
-                ", score=" + score +
+                "score=" + score +
                 ", result_img='" + result_img + '\'' +
                 '}';
     }
@@ -65,22 +61,6 @@ public class RecycleResult{
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public int getFail() {
-        return fail;
-    }
-
-    public void setFail(int fail) {
-        this.fail = fail;
-    }
-
-    public int getPass() {
-        return pass;
-    }
-
-    public void setPass(int pass) {
-        this.pass = pass;
     }
 }
 
