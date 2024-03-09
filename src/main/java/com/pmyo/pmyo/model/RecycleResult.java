@@ -21,6 +21,8 @@ public class RecycleResult{
     String result_img;
     //날짜 필드
     LocalDate date;
+    @Enumerated(EnumType.STRING)
+    Category category;
 
     public LocalDate getDate() {
         return date;
@@ -61,6 +63,14 @@ public class RecycleResult{
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
 
