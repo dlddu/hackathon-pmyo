@@ -1,15 +1,29 @@
 package com.pmyo.pmyo.model;
 
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Entity
+@NoArgsConstructor
 public class RecycleResult{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     int pass;
     int fail;
     int score;
 
-    public RecycleResult(){}
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getScore() {
         return score;

@@ -54,3 +54,6 @@ gradle-app.setting
 
 # Avoid ignore Gradle wrappper properties
 !gradle-wrapper.properties
+
+/src/main/resources/application.yml
+.jpb

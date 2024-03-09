@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1710011255085-1
+      author: csj (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_recycleresult
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: pass
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: fail
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: score
+                  type: INT
+            tableName: recycle_result
+  - changeSet:
+      id: 1710011255085-2
+      author: csj (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: user
+
