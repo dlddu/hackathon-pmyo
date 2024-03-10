@@ -1,8 +1,12 @@
 package com.pmyo.pmyo.controller;
 
+import com.pmyo.pmyo.model.Category;
+import com.pmyo.pmyo.model.RecycleResult;
+import com.pmyo.pmyo.model.RecycleResultRepository;
 import com.pmyo.pmyo.service.GptsService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.text.StringEscapeUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,12 +25,20 @@ public class GptsController {
     private final GptsService gptsService;
     @Value("${openai.api-key}")
     private String openAiApiKey;
+    @Autowired
+    private RecycleResultRepository recycleResultRepository;
 
     @PostMapping("/gpts")
     public ReturnClass gptController(@RequestParam("file") MultipartFile file) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         String returnValue = gptsService.savePic(file);
         System.out.println(returnValue);//s3에 저장
+        RecycleResult recycleResult = new RecycleResult();
+        recycleResult.setResult_img(returnValue);
+        recycleResult.setDate(java.time.LocalDate.now());
+        recycleResult.setCategory(Category.Glass);
+        recycleResult.setScore(100);
+        recycleResultRepository.save(recycleResult);
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(openAiApiKey);
 
