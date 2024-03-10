@@ -5,6 +5,7 @@ import com.pmyo.pmyo.model.RecycleResult;
 import com.pmyo.pmyo.model.RecycleResultRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping
+@CrossOrigin
 public class DashboardController {
     @Autowired
     private RecycleResultRepository recycleResultRepository;
