@@ -20,7 +20,7 @@ public class RecycleResultsController {
     private RecycleResultRepository recycleResultRepository;
 
     @GetMapping
-    public Iterable<String> recycleResultUrls() {
+    public Iterable<Response> recycleResultUrls() {
         LocalDate now = LocalDate.now();
         Month month = now.getMonth();
         int year = now.getYear();
@@ -28,6 +28,32 @@ public class RecycleResultsController {
         LocalDate end = start.plusMonths(1).minusDays(1);
         Iterable<RecycleResult> recycleResult = recycleResultRepository.findByDateBetween(start, end);
 
-        return IterableUtils.toList(recycleResult).stream().map(RecycleResult::getResult_img).toList();
+        return IterableUtils.toList(recycleResult).stream().map(it -> {
+            Response response = new Response();
+            response.setUrl(it.getResult_img());
+            response.setScore(it.getScore());
+            return response;
+        }).toList();
+    }
+
+    public static class Response {
+        private String url;
+        private int score;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
     }
 }
