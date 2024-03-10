@@ -2,11 +2,9 @@ package com.pmyo.pmyo.controller;
 
 import com.pmyo.pmyo.service.GptsService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,12 +38,15 @@ public class GptsController {
 
         ReturnClass returnClass = new ReturnClass();
         returnClass.setUrl(returnValue);
-        returnClass.setConversation(restTemplate.exchange(
+        ResponseEntity<String> responseEntity = restTemplate.exchange(
                 apiUrl,
                 HttpMethod.POST,
                 requestEntity,
                 String.class
-        ).getBody());
+        );
+        String body = responseEntity.getBody();
+        String conversation = StringEscapeUtils.unescapeJava(body);
+        returnClass.setConversation(conversation);
         return returnClass;
     }
 
